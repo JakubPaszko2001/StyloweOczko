@@ -70,11 +70,11 @@ export default function Pricing() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-beige border border-beige">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-0.5 bg-beige border border-beige">
         {categories.map((cat, i) => (
           <div
             key={cat.title}
-            className={`reveal delay-${i + 1} p-8 md:p-10 relative transition-colors duration-300 ${cat.featured ? "bg-beige text-dark" : "bg-white"
+            className={`reveal delay-${i + 1} p-8 lg:p-10 relative transition-colors duration-300 ${cat.featured ? "bg-beige text-dark" : "bg-white"
               }`}
           >
             {cat.featured && (

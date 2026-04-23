@@ -62,25 +62,19 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={() => setIsMenuOpen(false)}
-          className="font-serif text-xl md:text-[1.45rem] font-medium tracking-tight flex items-center gap-3 md:gap-4 group relative z-[110]"
+          className="relative z-[110] transition-transform duration-300"
         >
           <Image
             src={Logo}
             alt="Logo StyloweOczko"
             width={128}
             height={128}
-            className="w-28 h-28 object-contain"
+            className="w-24 h-24 md:w-28 md:h-28 object-contain"
           />
-          {/* <div className="hidden sm:block">
-            Stylowe<span className="text-rose">Oczko</span>
-          </div>
-          <div className="sm:hidden text-lg">
-            Stylowe<span className="text-rose">Oczko</span>
-          </div> */}
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-10 text-[0.72rem] tracking-[0.2em] uppercase font-medium">
+        <div className="hidden lg:flex gap-10 text-[0.72rem] tracking-[0.2em] uppercase font-medium">
           {menuItems.map((item) => (
             <button
               key={item.id}
@@ -95,7 +89,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <button
           onClick={() => scrollToSection("rezerwacja")}
-          className="hidden md:block bg-rose text-white px-6 py-2.5 text-[0.72rem] tracking-[0.15em] uppercase font-medium hover:bg-rose-dark transition-colors"
+          className="hidden lg:block bg-rose text-white px-6 py-2.5 text-[0.72rem] tracking-[0.15em] uppercase font-medium hover:bg-rose-dark transition-colors"
         >
           Umów wizytę
         </button>
@@ -103,7 +97,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden relative z-[110] w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
+          className="lg:hidden relative z-[110] w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
           aria-label="Toggle menu"
         >
           <span
@@ -123,7 +117,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[90] bg-cream transition-all duration-500 md:hidden flex flex-col items-center justify-center gap-8 px-6 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[90] bg-cream transition-all duration-500 lg:hidden flex flex-col items-center justify-center gap-8 px-6 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
       >
         <div className="flex flex-col items-center gap-6 text-center">
