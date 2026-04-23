@@ -49,8 +49,8 @@ export default function Gallery() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 px-20 bg-beige text-dark" id="galeria">
-      <div className="flex justify-between items-end mb-16">
+    <section ref={sectionRef} className="py-20 md:py-32 px-8 md:px-24 bg-beige text-dark" id="galeria">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
         <div>
           <p className="reveal text-[0.65rem] tracking-[0.3em] uppercase text-rose mb-5">Galeria efektów</p>
           <h2 className="reveal delay-1 font-serif text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.1] tracking-tight text-dark">

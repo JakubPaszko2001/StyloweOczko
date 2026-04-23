@@ -73,8 +73,8 @@ export default function BookingForm() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-32 px-20 bg-beige grid grid-cols-1 lg:grid-cols-2 gap-24 items-center" id="rezerwacja">
-      <div>
+    <section ref={sectionRef} className="py-20 md:py-32 px-8 md:px-24 bg-beige flex flex-col lg:flex-row gap-16 lg:gap-24 items-center" id="rezerwacja">
+      <div className="lg:w-1/2">
         <p className="reveal text-[0.65rem] tracking-[0.3em] uppercase text-rose mb-5">Rezerwacja</p>
         <h2 className="reveal delay-1 font-serif text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.1] tracking-tight mb-8">
           Umów swoją <em className="text-rose italic font-normal">wizytę</em>
@@ -100,10 +100,10 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <div className="reveal-right bg-white p-12 shadow-sm">
+      <div className="reveal-right lg:w-1/2 bg-white p-8 md:p-12 shadow-sm w-full">
         <p className="text-[0.65rem] tracking-[0.3em] uppercase text-rose mb-6">Formularz rezerwacji</p>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
               <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Imię</label>
               <input type="text" placeholder="Anna" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
@@ -120,7 +120,7 @@ export default function BookingForm() {
               <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">E-mail</label>
               <input type="email" placeholder="anna@email.pl" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
             </div>
-            <div className="col-span-2 flex flex-col gap-1.5">
+            <div className="md:col-span-2 flex flex-col gap-1.5">
               <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Usługa</label>
               <select className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required>
                 <option value="">Wybierz usługę...</option>
@@ -143,7 +143,7 @@ export default function BookingForm() {
                 <option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option>
               </select>
             </div>
-            <div className="col-span-2 flex flex-col gap-1.5">
+            <div className="md:col-span-2 flex flex-col gap-1.5">
               <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Uwagi (opcjonalnie)</label>
               <textarea placeholder="Dodatkowe informacje..." className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light resize-none h-[100px]"></textarea>
             </div>

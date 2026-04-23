@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-beige text-dark pt-16 pb-8 px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-beige text-dark pt-20 pb-10 px-8 md:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <div className="lg:col-span-1">
         <Link href="/" className="font-serif text-[1.6rem] font-medium tracking-tight mb-4 block">
           Stylowe<span className="text-rose">Oczko</span>

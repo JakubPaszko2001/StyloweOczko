@@ -52,8 +52,8 @@ export default function Services() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 px-20 bg-white" id="uslugi">
-      <div className="max-w-[600px] mb-20">
+    <section ref={sectionRef} className="py-20 md:py-32 px-8 md:px-24 bg-white" id="uslugi">
+      <div className="max-w-[600px] mb-12 md:mb-20">
         <p className="reveal text-[0.65rem] tracking-[0.3em] uppercase text-rose mb-5">Nasze usługi</p>
         <h2 className="reveal delay-1 font-serif text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.1] tracking-tight max-w-[28rem] mb-6">
           Kompleksowa pielęgnacja dla <em className="text-rose italic font-normal">Ciebie</em>
@@ -63,11 +63,13 @@ export default function Services() {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-beige border border-beige overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-beige border border-beige overflow-hidden">
         {services.map((s, i) => (
           <div
             key={s.num}
-            className={`reveal delay-${i + 1} bg-white p-10 cursor-pointer transition-colors duration-300 relative group overflow-hidden hover:bg-cream`}
+            className={`reveal delay-${i + 1} bg-white p-8 md:p-10 cursor-pointer transition-colors duration-300 relative group overflow-hidden hover:bg-cream ${
+              i === 4 ? "md:col-span-2 lg:col-span-1" : ""
+            }`}
           >
             <div className="absolute bottom-0 left-0 w-full h-[3px] bg-rose scale-x-0 origin-left transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
             <div className="font-serif text-[3.5rem] font-light text-beige leading-none mb-4 transition-colors duration-300 group-hover:text-rose-light">
