@@ -98,7 +98,7 @@ export default function Hero() {
       >
         <div className="w-full h-full relative">
           <Image
-            ref={imgRef}
+
             src={HeroImage}
             alt="Studio Beauty"
             fill
