@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../assets/Logo3.svg";
+import Logo from "../assets/Logo4.svg";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

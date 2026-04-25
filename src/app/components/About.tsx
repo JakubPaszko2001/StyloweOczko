@@ -33,7 +33,7 @@ export default function About() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-32 px-20 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center" id="onas">
+    <section ref={sectionRef} className="py-20 md:py-32 px-8 md:px-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center" id="onas">
       <div className="reveal-left relative">
         <div className="relative aspect-[4/5] w-full">
           <Image
