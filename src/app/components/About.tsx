@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Essential from "../assets/Essentials.png"
+import Essential from "../assets/kosmetyczka2.jpg"
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
