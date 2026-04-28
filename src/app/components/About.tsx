@@ -25,13 +25,6 @@ export default function About() {
     return () => observer.disconnect();
   }, []);
 
-  const stats = [
-    { num: "8+", label: "Lat doświadczenia" },
-    { num: "2k+", label: "Zadowolonych klientek" },
-    { num: "5★", label: "Średnia ocena" },
-    { num: "20+", label: "Rodzajów zabiegów" },
-  ];
-
   return (
     <section ref={sectionRef} className="py-20 md:py-32 px-8 md:px-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center" id="onas">
       <div className="reveal-left relative">
