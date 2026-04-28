@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   await resend.emails.send({
     from: "StyloweOczko <onboarding@resend.dev>",
     to: "kontakt@styloweoczko.pl",
-    reply_to: email,
+    replyTo: email,
     subject: `Nowa rezerwacja – ${usluga}`,
     html: `
       <div style="font-family:sans-serif;max-width:520px;color:#1E120D">
