@@ -87,12 +87,14 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <button
-          onClick={() => scrollToSection("rezerwacja")}
+        <a
+          href="https://booksy.com/pl-pl/35877_stylowe-oczko_salon-kosmetyczny_5869_bialystok#ba_s=seo"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden lg:block bg-rose text-white px-6 py-2.5 text-[0.72rem] tracking-[0.15em] uppercase font-medium hover:bg-rose-dark transition-colors"
         >
           Umów wizytę
-        </button>
+        </a>
 
         {/* Mobile Menu Button */}
         <button
@@ -133,14 +135,17 @@ export default function Navbar() {
             </button>
           ))}
 
-          <button
-            onClick={() => scrollToSection("rezerwacja")}
+          <a
+            href="https://booksy.com/pl-pl/35877_stylowe-oczko_salon-kosmetyczny_5869_bialystok#ba_s=seo"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMenuOpen(false)}
             className={`mt-4 bg-rose text-white px-10 py-4 text-sm tracking-[0.2em] uppercase font-medium hover:bg-rose-dark transition-all duration-500 transform ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
               }`}
             style={{ transitionDelay: `${menuItems.length * 100}ms` }}
           >
             Umów wizytę
-          </button>
+          </a>
         </div>
 
         <div className={`absolute bottom-12 flex flex-col items-center gap-2 text-rose/60 text-xs tracking-widest uppercase transition-all duration-700 delay-500 ${isMenuOpen ? "opacity-100" : "opacity-0"

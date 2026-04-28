@@ -6,10 +6,11 @@ const categories = [
   {
     title: "Kosmetologia",
     services: [
-      { name: "Oczyszczanie twarzy", price: "150 zł" },
-      { name: "Peeling kawitacyjny", price: "180 zł" },
-      { name: "Mikrodermabrazja", price: "200 zł" },
-      { name: "Lifting twarzy RF", price: "250 zł" },
+      { name: "Konsultacja kosmetologiczna", price: "70 zł" },
+      { name: "Oczyszczanie manualne", price: "250 zł" },
+      { name: "Oczyszczanie wodorowe", price: "260 zł" },
+      { name: "Mezoterapia mikroigłowa", price: "320 zł" },
+      { name: "Zabieg anti-aging", price: "420 zł" },
     ],
     note: "Ceny orientacyjne. Ostateczna wycena po konsultacji.",
   },
@@ -17,24 +18,24 @@ const categories = [
     title: "Rzęsy & Brwi",
     featured: true,
     services: [
-      { name: "Rzęsy 1:1", price: "180 zł" },
-      { name: "Rzęsy objętościowe", price: "220 zł" },
-      { name: "Laminowanie rzęs", price: "160 zł" },
-      { name: "Laminowanie brwi", price: "120 zł" },
-      { name: "Henna brwi", price: "60 zł" },
+      { name: "Rzęsy 1:1", price: "160 zł" },
+      { name: "Rzęsy Medium Volume (6-8D)", price: "250 zł" },
+      { name: "Laminacja rzęs + botox", price: "160 zł" },
+      { name: "Laminacja brwi + botox", price: "160 zł" },
+      { name: "Henna + regulacja brwi", price: "70 zł" },
     ],
-    note: "Uzupełnienia 50% ceny zabiegu.",
+    note: "Uzupełnienia rzęs od 130 zł.",
   },
   {
     title: "Paznokcie",
     services: [
-      { name: "Manicure klasyczny", price: "70 zł" },
-      { name: "Manicure hybrydowy", price: "110 zł" },
-      { name: "Żel przedłużenie", price: "180 zł" },
-      { name: "Pedicure klasyczny", price: "100 zł" },
-      { name: "Nail art (od)", price: "20 zł" },
+      { name: "Manicure klasyczny", price: "90 zł" },
+      { name: "Manicure hybrydowy", price: "120 zł" },
+      { name: "Żel na naturalnej płytce", price: "150 zł" },
+      { name: "Pedicure hybrydowy", price: "130 zł" },
+      { name: "Pedicure frezarkowy", price: "150 zł" },
     ],
-    note: "Ceny zdobień zależą od stopnia trudności.",
+    note: "Usunięcie stylizacji od 20 zł.",
   },
 ];
 
@@ -70,7 +71,7 @@ export default function Pricing() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-0.5 bg-beige border border-beige">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-0.5 bg-beige border border-beige mb-10">
         {categories.map((cat, i) => (
           <div
             key={cat.title}
@@ -104,6 +105,26 @@ export default function Pricing() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="reveal border border-beige bg-[#FAF7F4] px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <p className="text-[0.68rem] tracking-[0.25em] uppercase text-rose mb-1.5">Więcej ofert</p>
+          <p className="font-serif text-[1.2rem] font-light text-dark leading-snug">
+            Pełny cennik i rezerwacja online
+            <em className="italic text-rose font-normal"> na Booksy</em>
+          </p>
+          <p className="text-[0.8rem] text-muted mt-1.5 font-light">
+            Znajdziesz tam aktualną ofertę, dostępne terminy i możliwość szybkiej rezerwacji.
+          </p>
+        </div>
+        <a
+          href="https://booksy.com/pl-pl/35877_stylowe-oczko_salon-kosmetyczny_5869_bialystok#ba_s=seo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 bg-[#1E120D] text-white px-8 py-3.5 text-[0.7rem] tracking-[0.2em] uppercase font-medium hover:bg-rose transition-all duration-500 whitespace-nowrap"
+        >
+          Przejdź do Booksy →
+        </a>
       </div>
     </section>
   );

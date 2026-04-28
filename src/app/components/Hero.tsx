@@ -67,12 +67,14 @@ export default function Hero() {
         </p>
 
         <div className="reveal delay-300 opacity-0 translate-y-4 transition-all duration-700 flex items-center gap-10">
-          <button
-            onClick={() => scrollToSection("rezerwacja")}
+          <a
+            href="https://booksy.com/pl-pl/35877_stylowe-oczko_salon-kosmetyczny_5869_bialystok#ba_s=seo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#1E120D] text-white px-10 py-4 text-[0.7rem] tracking-[0.2em] uppercase font-medium hover:bg-[#C4876A] transition-all duration-500"
           >
             Umów wizytę
-          </button>
+          </a>
           <button
             onClick={() => scrollToSection("uslugi")}
             className="text-[0.7rem] tracking-[0.2em] uppercase text-[#1E120D] flex items-center gap-3 font-medium hover:text-[#C4876A] transition-colors group"
