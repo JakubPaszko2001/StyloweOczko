@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function BookingForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const sectionRef = useRef<HTMLElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const revealEls = sectionRef.current?.querySelectorAll(".reveal, .reveal-right");
@@ -19,30 +19,21 @@ export default function BookingForm() {
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
-
     revealEls?.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("loading");
-    const fd = new FormData(e.currentTarget);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(fd)),
-      });
-      if (!res.ok) throw new Error();
-      setStatus("success");
-      e.currentTarget.reset();
-      setTimeout(() => setStatus("idle"), 5000);
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
-    }
-  };
+  useEffect(() => {
+    const container = widgetRef.current;
+    if (!container || container.querySelector("script")) return;
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://booksy.com/widget/code.js?id=35877&country=pl&lang=pl";
+    container.appendChild(script);
+
+    return () => { container.innerHTML = ""; };
+  }, []);
 
   const contactItems = [
     {
@@ -90,17 +81,21 @@ export default function BookingForm() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 px-8 md:px-24 bg-beige flex flex-col lg:flex-row gap-16 lg:gap-24 items-center" id="rezerwacja">
-      <div className="lg:w-1/2">
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-32 px-8 md:px-24 bg-beige flex flex-col lg:flex-row gap-16 lg:gap-24 items-start"
+      id="rezerwacja"
+    >
+      <div className="lg:w-1/3 lg:sticky lg:top-32">
         <p className="reveal text-[0.65rem] tracking-[0.3em] uppercase text-rose mb-5">Rezerwacja</p>
         <h2 className="reveal delay-1 font-serif text-[clamp(2.2rem,4vw,3.8rem)] font-light leading-[1.1] tracking-tight mb-8">
           Umów swoją <em className="text-rose italic font-normal">wizytę</em>
         </h2>
         <p className="reveal delay-2 text-[0.88rem] leading-[1.8] text-muted mb-12">
-          Zarezerwuj termin online lub skontaktuj się z nami bezpośrednio. Odpiszemy w ciągu kilku godzin.
+          Wybierz dogodny termin w naszym systemie rezerwacji online Booksy lub skontaktuj się z nami telefonicznie.
         </p>
-        
-        <div className="reveal delay-3 space-y-0">
+
+        <div className="reveal delay-3">
           {contactItems.map((item) => {
             const inner = (
               <>
@@ -134,72 +129,17 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <div className="reveal-right lg:w-1/2 bg-white p-8 md:p-12 shadow-sm w-full">
-        <p className="text-[0.65rem] tracking-[0.3em] uppercase text-rose mb-6">Formularz rezerwacji</p>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Imię</label>
-              <input name="imie" type="text" placeholder="Anna" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Nazwisko</label>
-              <input name="nazwisko" type="text" placeholder="Kowalska" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Telefon</label>
-              <input name="telefon" type="tel" placeholder="+48 500 000 000" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">E-mail</label>
-              <input name="email" type="email" placeholder="anna@email.pl" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
-            </div>
-            <div className="md:col-span-2 flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Usługa</label>
-              <select name="usluga" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required>
-                <option value="">Wybierz usługę...</option>
-                <option>Kosmetologia</option>
-                <option>Stylizacja rzęs</option>
-                <option>Stylizacja brwi</option>
-                <option>Paznokcie</option>
-                <option>Endermologia</option>
-              </select>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Data</label>
-              <input name="data" type="date" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Godzina</label>
-              <select name="godzina" className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light" required>
-                <option>9:00</option><option>9:30</option><option>10:00</option><option>10:30</option>
-                <option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option>
-                <option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option>
-              </select>
-            </div>
-            <div className="md:col-span-2 flex flex-col gap-1.5">
-              <label className="text-[0.68rem] tracking-[0.15em] uppercase text-muted font-medium">Uwagi (opcjonalnie)</label>
-              <textarea name="uwagi" placeholder="Dodatkowe informacje..." className="border border-beige p-3.5 text-[0.85rem] bg-cream outline-none focus:border-rose transition-colors font-light resize-none h-[100px]"></textarea>
-            </div>
-          </div>
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className={`w-full p-4 text-[0.72rem] tracking-[0.2em] uppercase font-medium transition-colors duration-200 mt-4 disabled:opacity-60 ${
-              status === "success" ? "bg-green-700 text-white" :
-              status === "error"   ? "bg-red-700 text-white" :
-              "bg-rose text-white hover:bg-rose-dark"
-            }`}
-          >
-            {status === "loading" ? "Wysyłanie..." :
-             status === "success" ? "Wysłano! Odezwiemy się wkrótce ✓" :
-             status === "error"   ? "Błąd – spróbuj ponownie" :
-             "Wyślij rezerwację"}
-          </button>
-          <p className="text-[0.72rem] text-muted text-center mt-4">
-            Odpiszemy w ciągu kilku godzin
-          </p>
-        </form>
+      <div className="reveal-right lg:w-2/3 w-full bg-white shadow-sm overflow-hidden">
+        <div className="p-10 md:p-14 flex flex-col items-center text-center">
+          <p className="text-[0.6rem] tracking-[0.3em] uppercase text-rose mb-4">Rezerwacja online</p>
+          <h3 className="font-serif text-[clamp(1.8rem,3vw,2.6rem)] font-light tracking-tight leading-[1.15] mb-3">
+            Zarezerwuj wizytę<br />
+            przez <em className="text-rose italic font-normal">Booksy</em>
+          </h3>
+          <div className="w-8 h-px bg-rose mt-6 mb-10" />
+
+          <div ref={widgetRef} />
+        </div>
       </div>
     </section>
   );
