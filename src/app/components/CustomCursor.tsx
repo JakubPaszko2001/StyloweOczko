@@ -1,12 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
     const cursor = cursorRef.current;
     const ring = ringRef.current;
     if (!cursor || !ring) return;
@@ -52,7 +62,9 @@ export default function CustomCursor() {
         el.removeEventListener("mouseleave", onMouseLeave);
       });
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <>
